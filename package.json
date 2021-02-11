@@ -1,0 +1,34 @@
+{
+    "name": "tictactrip",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "assert": "^2.0.0",
+        "body-parser": "^1.19.0",
+        "chai": "^4.3.0",
+        "chai-http": "^4.3.0",
+        "crypto": "^1.0.1",
+        "express": "^4.17.1",
+        "joi": "^17.3.0",
+        "jsonwebtoken": "^8.5.1",
+        "mocha": "^8.2.1",
+        "mysql2": "^2.2.5",
+        "node-cron": "^2.0.3",
+        "node-libs-browser": "^2.2.1",
+        "passport": "^0.4.1",
+        "passport-jwt": "^4.0.0",
+        "sequelize": "^6.5.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7",
+        "sequelize-cli": "^6.2.0"
+    },
+    "scripts": {
+        "dev": "nodemon app",
+        "test": "NODE_ENV=test mocha test --exit"
+    },
+    "type": "commonjs",
+    "author": "",
+    "license": "ISC"
+}
