@@ -23,9 +23,8 @@ app.post('/justify', async function (req, res) {
     const withoutSpacing = paragraph.map(para => {
         return justify(para.match(/\S+/g))
     }).join('').split('\n')
-    const result = (addSpace(withoutSpacing)).join('');
-    res.send(result)
-
+    const result = (addSpace(withoutSpacing));
+    res.send(result.join('\n'))
 })
 
 module.exports = app;

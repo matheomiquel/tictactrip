@@ -23,7 +23,7 @@ const justify = function (arr) {
     }
     let array = [];
     const result = arr.reduce((accumulator, currentValue) => {
-        if ((accumulator.length + currentValue.length + 1) < 80) {
+        if ((accumulator.length + currentValue.length + 1) <= 80) {
             if (!accumulator) {
                 return `${currentValue}`
             } else {
@@ -53,32 +53,34 @@ const addSpace = function addSpaceForJustify(array) {
         if (!line.match(/\S/g)) {
             return '\n'
         }
-        if (index === array.length - 1 || line.length === 80)
-            return `${line}\n`;
-        else {
+        if (index === array.length - 1 || line.length === 80) {
+            return `${line}`;
+        } else {
             let newLine = "";
             const word = (line.match(/\S+/g))
             const letter = (line.match(/\S/g))
-            const space = (80 - letter.length)
-            let remainingSpace = space;
-            let addSpace = []
+            let space = (80 - letter.length)
+            let addSpace = [];
+            let remainingWord = word.length - 1;
             for (let i = 0; i < word.length - 1; i++) {
                 let tmp = "";
                 let j;
-                for (j = 0; j < Math.ceil(space / (word.length - 1)) && j < remainingSpace; j++) {
+
+                for (j = 0; j < Math.ceil(space / (remainingWord)); j++) {
                     tmp += " ";
                 }
-                remainingSpace -= j;
+                remainingWord -= 1;
+                space -= j
                 addSpace.push(tmp);
             }
             for (let i = 0; i < addSpace.length; i++) {
                 newLine += `${word[i]}${addSpace[i]}`
             }
-            newLine += `${word[word.length - 1]}\n`;
+            newLine += `${word[word.length - 1]}`;
             return newLine
         }
     });
-    return result;
+    return result
 }
 module.exports = {
     stringReduce,

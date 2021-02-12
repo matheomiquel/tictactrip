@@ -50,7 +50,7 @@ describe('hooks', function () {
             });
     });
 
-    it("liste des utilisateurs en étant connecté", (done) => {
+    it("envoie de 80 000 mots, vérification que chaque ligne fait bien 80 caractere", (done) => {
         chai.request(app)
             .post('/api/justify')
             .set('Authorization', token)
@@ -65,7 +65,7 @@ describe('hooks', function () {
                 done();
             });
     });
-    it("liste des utilisateurs en étant connecté", (done) => {
+    it("envoie de 1 mot pour véifier la limite  de 80 000 mots", (done) => {
         chai.request(app)
             .post('/api/justify')
             .set('Authorization', token)
