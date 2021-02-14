@@ -70,7 +70,11 @@ app.post('/register', async function (req, res) {
         delete user.dataValues.password;
         return res.status(201).json(user);
     } catch (err) {
-        res.status(409).json(err.errors[0].message)
+        try {
+            res.status(409).json(err.errors[0].message)
+        } catch (e) {
+            res.status(500).json(e)
+        }
     }
 });
 

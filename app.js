@@ -11,33 +11,29 @@ const swaggerUi = require("swagger-ui-express");
 require('./cron/reset')
 const swaggerOptions = {
     swaggerDefinition: {
-      openapi: "3.0.1",
-      info: {
-        title: "My apis in swaager",
-        version: "1.0.0",
-      },
-      servers: [
-        {
-          url: "http://localhost:3000",
+        openapi: "3.0.1",
+        info: {
+            title: "My apis in swaager",
+            version: "1.0.0",
         },
-      ],
-      components: {
-        securitySchemes: {
-          bearerAuth: {
-            type: "http",
-            scheme: "bearer",
-            bearerFormat: "JWT",
-          },
+        servers: [{
+            url: "http://localhost:3000"
+        }, ],
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT",
+                },
+            },
         },
-      },
-      security: [
-        {
-          bearerAuth: [],
-        },
-      ],
+        security: [{
+            bearerAuth: [],
+        }, ],
     },
-    apis: ["app.js", "./controller/*.js","./swagger_definition/*.js"]
-  };
+    apis: ["app.js", "./controller/*.js", "./swagger_definition/*.js"]
+};
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
