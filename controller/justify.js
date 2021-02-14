@@ -10,6 +10,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+/**
+ * @swagger
+ * /api/justify:
+ *  post:
+ *    description: inscrit un utilisateur
+ *    tags: [Justify]
+ *    requestBody:
+ *        required: true
+ *        content:
+ *            text/plain:
+ *                schema:
+ *                  type: string
+ *    responses:
+ *      '200':
+ *        description: Renvoie le text envoyé au format justifié.
+ *      '401':
+ *        description: L'utilisateur n'est pas connecté.
+ *      '402':
+ *        description: L'utilisateur a dépassé sa limite journalière.
+ */
 app.post('/justify', async function (req, res) {
     const user = await userModel.findByPk(req.user.id, {
         attributes: ['word', 'id']
